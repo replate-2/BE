@@ -12,7 +12,7 @@ exports.up = function(knex) {
         tbl.integer('phoneNumber', 10).notNullable();
         tbl.string('role').notNullable();
     })
-    .createTable('businesses', tbl => {
+    .createTable('businessProfile', tbl => {
         tbl.increments();
 
         tbl
@@ -28,10 +28,10 @@ exports.up = function(knex) {
             .notNullable()
             .references('id')
             .inTable('users')
-            .onDelete('RESTRICT')
+            .onDelete('CASCADE')
             .onUpdate('CASCADE')
     })
-    .createTable('volunteers', tbl => {
+    .createTable('volunteerProfile', tbl => {
         tbl.increments();
 
         tbl
@@ -45,7 +45,7 @@ exports.up = function(knex) {
             .notNullable()
             .references('id')
             .inTable('users')
-            .onDelete('RESTRICT')
+            .onDelete('CASCADE')
             .onUpdate('CASCADE')
     })
     .createTable('food', tbl => {
@@ -59,7 +59,7 @@ exports.up = function(knex) {
             .unsigned()
             .notNullable()
             .references('id')
-            .inTable('businesses')
+            .inTable('businessProfile')
             .onDelete('CASCADE')
             .onUpdate('CASCADE')
     })
@@ -80,7 +80,7 @@ exports.up = function(knex) {
             .unsigned()
             .notNullable()
             .references('id')
-            .inTable('volunteers')
+            .inTable('volunteerProfile')
             .onDelete('CASCADE')
             .onUpdate('CASCADE')
     })
@@ -90,7 +90,7 @@ exports.down = function(knex) {
     return knex.schema
         .dropTableIfExists('pickupRequests')
         .dropTableIfExists('food')
-        .dropTableIfExists('volunteers')
-        .dropTableIfExists('businesses')
+        .dropTableIfExists('volunteerProfile')
+        .dropTableIfExists('businessProfile')
         .dropTableIfExists('users')
 };
