@@ -1,11 +1,11 @@
 const router = require('express').Router();
 
-const Food = require('./food-model');
+const Pickups = require('./pickups-model');
 
 router.get('/', (req, res) => {
-    Food.find()
-    .then(food => {
-        res.status(200).json(food)
+    Pickups.find()
+    .then(pickups => {
+        res.status(200).json(pickups)
     })
     .catch(err => {
         res.status(500).json({message: err})
@@ -15,12 +15,12 @@ router.get('/', (req, res) => {
 router.get('/:id', (req, res) => {
     const id = req.params.id;
 
-    Food.findById(id)
-    .then(food => {
-        if (food) {
-            res.status(200).json(food)
+    Pickups.findById(id)
+    .then(pickups => {
+        if (pickups) {
+            res.status(200).json(pickups)
         } else {
-            res.status(404).json({message: 'Could not find food with that id'})
+            res.status(404).json({message: 'Could not find pickups with that id'})
         }
     })
     .catch(err => {
@@ -28,15 +28,15 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.get('/business/:id', (req, res) => {
+router.get('/volunteer/:id', (req, res) => {
     const id = req.params.id;
 
-    Food.findByBus(id)
-        .then(food => {
-            if (food) {
-                res.status(200).json(food)
+    Pickups.findByVol(id)
+        .then(pickups => {
+            if (pickups) {
+                res.status(200).json(pickups)
             } else {
-                res.status(404).json({message: 'Unable to find requests for that business id'})
+                res.status(404).json({message: 'Unable to find requests for that volunteer id'})
             }
         })
         .catch(err => {
@@ -45,11 +45,11 @@ router.get('/business/:id', (req, res) => {
 })
 
 router.post('/', (req, res) => {
-    const foodInfo = req.body;
+    const pickupsInfo = req.body;
 
-    Food.add(foodInfo)
-    .then(food => {
-        res.status(201).json(food)
+    Pickups.add(pickupsInfo)
+    .then(pickups => {
+        res.status(201).json(pickups)
     })
     .catch(err => {
         res.status(500).json({message: err})
@@ -60,15 +60,15 @@ router.put('/:id', (req, res) => {
     const id = req.params.id;
     const changes = req.body;
 
-    Food.findById(id)
-    .then(food => {
-        if (food) {
-            Food.update(changes, id)
+    Pickups.findById(id)
+    .then(pickups => {
+        if (pickups) {
+            Pickups.update(changes, id)
             .then(updatedInfo => {
                 res.status(201).json(updatedInfo)
             })
         } else {
-            res.status(404).json({message: 'Unable to find food with that id'})
+            res.status(404).json({message: 'Unable to find pickups with that id'})
         }
     })
     .catch(err => {
@@ -79,12 +79,12 @@ router.put('/:id', (req, res) => {
 router.delete('/:id', (req, res) => {
     const id = req.params.id;
 
-    Food.remove(id)
+    Pickups.remove(id)
         .then(deleted => {
             if (deleted) {
                 res.status(200).json({removed: deleted})
             } else {
-                res.status(404).json({message: 'Could not find food with that id'});
+                res.status(404).json({message: 'Could not find pickups with that id'});
             }
         })
         .catch(err => {

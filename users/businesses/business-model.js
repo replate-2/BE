@@ -4,7 +4,6 @@ module.exports = {
     find,
     findBy,
     findById,
-    add,
     update,
     remove
 }
@@ -23,14 +22,6 @@ function findById(id) {
     return db('businesses')
         .where({id})
         .first()
-}
-
-function add(business) {
-    return db('businesses')
-        .insert(business, 'id')
-        .then(ids => {
-            return findById(ids);
-        })
 }
 
 function update(changes, id) {

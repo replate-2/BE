@@ -2,7 +2,7 @@ const db = require('../data/dbConfig');
 
 module.exports = {
     find,
-    findBy,
+    findByBus,
     findById,
     add,
     update,
@@ -13,16 +13,13 @@ function find() {
     return db('food')
 }
 
-function findBy(filter) {
+function findByBus(businessId) {
     return db('food')
-        .select('*')
-        .where(filter);
+        .where({businessId})
 }
 
 function findById(id) {
-    return db('food as f')
-        .join('businessProfile as b', 'f.businessId', 'b.id')
-        .select('id', 'f.foodType', 'f.lbsofFood', 'f.preferredPickupTime', 'b.businessName')
+    return db('food')
         .where({id})
         .first()
 }

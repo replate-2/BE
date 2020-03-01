@@ -16,24 +16,12 @@ router.get('/:id', (req, res) => {
     const id = req.params.id;
 
     Businesses.findById(id)
-    .then(Business => {
-        if (Business) {
-            res.status(200).json(Business)
+    .then(business => {
+        if (business) {
+            res.status(200).json(business)
         } else {
             res.status(404).json({message: 'Could not find Businesses with that id'})
         }
-    })
-    .catch(err => {
-        res.status(500).json({message: err})
-    })
-})
-
-router.post('/', (req, res) => {
-    const businessInfo = req.body;
-
-    Businesses.add(businessInfo)
-    .then(business => {
-        res.status(201).json(business)
     })
     .catch(err => {
         res.status(500).json({message: err})
