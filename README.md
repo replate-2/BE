@@ -6,7 +6,7 @@
 POST to /api/auth/business/register
 
 Takes an object including:
-`
+```
 {
     username: 'Business1', // Unique string
     password: 'password', // string
@@ -14,39 +14,39 @@ Takes an object including:
     businessAddress: '123 N. Street', // string
     businessPhone: 1234567890 // integer
 }
-`
+```
 **Login Existing Business**
 POST to /api/auth/business/login
 
 Takes an object including:
-`
+```
 {
     username: 'Business1',
     password: 'password'
 }
-`
+```
 **Register New Volunteer**
 POST to /api/auth/volunteer/register
 
 Takes an object including:
-`
+```
 {
     username: 'Volunteer1', // Unique string
     password: 'password', // string
     name: 'My Name', // string
     phoneNumber: 1234567890 // integer
 }
-`
+```
 **Login Existing Volunteer**
 POST to /api/auth/volunteer/login
 
 Takes an object including:
-`
+```
 {
     username: 'Volunteer1',
     password: 'password'
 }
-`
+```
 # THE FOLLOWING ENDPOINTS REQUIRE A USER TO BE LOGGED IN!
 
 **Update Business Profile**
@@ -74,14 +74,14 @@ GET /api/food/business/:id
 POST to /api/food
 
 Takes an object including:
-`
+```
 {
     foodType: 'new food item', // string
     lbsOfFood: 3, // integer
     preferredPickupTime: 2020-03-01 22:00:00 //datetime format
     businessId: 1 // integer - must match existing business Id
 }
-`
+```
 **Update existing food donation**
 PUT to /api/food/:id
 
@@ -101,13 +101,13 @@ GET /api/pickups/volunterr/:id
 POST /api/pickups
 
 Takes an object including:
-`
+```
 {
     completed: false // returns 0 as false, 1 if true
     foodId: 1, // must be an Id of existing donation in food list
     volunteerId: 1 // must be existing volunteer Id
 }
-`
+```
 **Update Existing Pick Up Request**
 PUT to /api/pickups/:id
 
