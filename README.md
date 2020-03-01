@@ -1,11 +1,12 @@
 # BE Endpoints
 
-# Base URL: https://bw-replate2.herokuapp.com/
+**Base URL: https://bw-replate2.herokuapp.com/**
 
-# Register New Business
+**Register New Business**
 POST to /api/auth/business/register
 
 Takes an object including:
+`
 {
     username: 'Business1', // Unique string
     password: 'password', // string
@@ -13,98 +14,103 @@ Takes an object including:
     businessAddress: '123 N. Street', // string
     businessPhone: 1234567890 // integer
 }
-
-# Login Existing Business
+`
+**Login Existing Business**
 POST to /api/auth/business/login
 
 Takes an object including:
+`
 {
     username: 'Business1',
     password: 'password'
 }
-
-# Register New Volunteer
+`
+**Register New Volunteer**
 POST to /api/auth/volunteer/register
 
 Takes an object including:
+`
 {
     username: 'Volunteer1', // Unique string
     password: 'password', // string
     name: 'My Name', // string
     phoneNumber: 1234567890 // integer
 }
-
-# Login Existing Volunteer
+`
+**Login Existing Volunteer**
 POST to /api/auth/volunteer/login
 
 Takes an object including:
+`
 {
     username: 'Volunteer1',
     password: 'password'
 }
+`
+# THE FOLLOWING ENDPOINTS REQUIRE A USER TO BE LOGGED IN!
 
-**THE FOLLOWING ENDPOINTS REQUIRE A USER TO BE LOGGED IN!**
-
-# Update Business Profile
+**Update Business Profile**
 PUT to /api/users/business/:id
 
-# Delete Business Profile
+**Delete Business Profile**
 DELETE to /api/users/business/:id
 
-# Update Volunteer Profile
+**Update Volunteer Profile**
 PUT to /api/users/volunteer/:id
 
-# Delete Volunteer Profile
+**Delete Volunteer Profile**
 DELETE to /api/users/volunteer/:id
 
-# Get list of all food donations
+**Get list of all food donations**
 GET /api/food
 
-# Get food donation by Id
+**Get food donation by Id**
 GET /api/food/:id
 
-# Get all food donations by Business Id
+**Get all food donations by Business Id**
 GET /api/food/business/:id
 
-# Add a new food to be donated
+**Add a new food to be donated**
 POST to /api/food
 
 Takes an object including:
+`
 {
     foodType: 'new food item', // string
     lbsOfFood: 3, // integer
     preferredPickupTime: 2020-03-01 22:00:00 //datetime format
     businessId: 1 // integer - must match existing business Id
 }
-
-# Update existing food donation
+`
+**Update existing food donation**
 PUT to /api/food/:id
 
-# Delete existing food donation
+**Delete existing food donation**
 DELETE to /api/food/:id
 
-# Get all pending pickups (already assigned to a Volunteer Id)
+**Get all pending pickups (already assigned to a Volunteer Id)**
 GET /api/pickups
 
-# Get pick up by pickup Id
+**Get pick up by pickup Id**
 GET /api/pickups/:id
 
-# Get all pick ups for a Volunteer Id
+**Get all pick ups for a Volunteer Id**
 GET /api/pickups/volunterr/:id
 
-# Add donation to pick up list
+**Add donation to pick up list**
 POST /api/pickups
 
 Takes an object including:
+`
 {
     completed: false // returns 0 as false, 1 if true
     foodId: 1, // must be an Id of existing donation in food list
     volunteerId: 1 // must be existing volunteer Id
 }
-
-# Update Existing Pick Up Request
+`
+**Update Existing Pick Up Request**
 PUT to /api/pickups/:id
 
-# Delete Pick Up from Pickups List
+**Delete Pick Up from Pickups List**
 DELETE to /api/pickups/:id
 
