@@ -28,17 +28,6 @@ router.get('/:id', (req, res) => {
     })
 })
 
-router.post('/', (req, res) => {
-    const volunteerInfo = req.body;
-
-    Volunteers.add(volunteerInfo)
-    .then(volunteer => {
-        res.status(201).json(volunteer)
-    })
-    .catch(err => {
-        res.status(500).json({message: err})
-    })
-})
 
 router.put('/:id', (req, res) => {
     const id = req.params.id;

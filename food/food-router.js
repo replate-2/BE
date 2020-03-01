@@ -28,6 +28,22 @@ router.get('/:id', (req, res) => {
     })
 })
 
+router.get('/business/:id', (req, res) => {
+    const id = req.params.id;
+
+    Food.findByBus(id)
+        .then(food => {
+            if (food) {
+                res.status(200).json(food)
+            } else {
+                res.status(404).json({message: 'Unable to find requests for that business id'})
+            }
+        })
+        .catch(err => {
+            res.status(500).json({message: err})
+        })
+})
+
 router.post('/', (req, res) => {
     const foodInfo = req.body;
 
