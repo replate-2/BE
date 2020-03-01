@@ -10,18 +10,26 @@ module.exports = {
 }
 
 function find() {
-    return db('pickupRequests')
-        
+    return db('pickupRequests as p')
+        .join('food as f', 'p.foodId', 'f.id')
+        .join('volunteers as v', 'p.volunteerId', 'v.id')
+        .select('p.id', 'f.foodType', 'f.lbsOfFood', 'f.preferredPickupTime', 'p.completed', 'v.name')
 }
 
 function findByVol(volunteerId) {
-    return db('pickupRequests')
-        .where({volunteerId})
+    return db('pickupRequests as p')
+    .join('food as f', 'p.foodId', 'f.id')
+    .join('volunteers as v', 'p.volunteerId', 'v.id')
+    .select('p.id', 'f.foodType', 'f.lbsOfFood', 'f.preferredPickupTime', 'p.completed', 'v.name')
+    .where({volunteerId})
 }
 
 function findById(id) {
-    return db('pickupRequests')
-        .where({id})
+    return db('pickupRequests as p')
+    .join('food as f', 'p.foodId', 'f.id')
+    .join('volunteers as v', 'p.volunteerId', 'v.id')
+    .select('p.id', 'f.foodType', 'f.lbsOfFood', 'f.preferredPickupTime', 'p.completed', 'v.name')
+        .where('p.id', id)
         .first()
 }
 
