@@ -31,17 +31,27 @@ describe('business router', function () {
         //             password: 'password'
         //         })
         //         .then(res => {
-        //             let token = res.body.token;
+        //             token = res.body.token;
         //         })
         // })
 
         // it('returns list of registered businesses', function () {
         //     return request(server)
-        //      .get('/api/users/business')
-        //             .set('authorization', token)
-        //             .then(res => {
-        //                 expect(res.status).toBe(200);
-        //             })
+        //     .post('/api/auth/business/login')
+        //         .set({
+        //             username: 'TestBus',
+        //             password: 'password'
+        //         })
+        //         .then(res => {
+        //             token = res.body.token;
+        //             return request(server)
+        //                 .get('/api/users/business')
+        //                 .set("authorization", token)
+        //                 .then(res => {
+        //                     expect(res.status).toBe(200);
+        //                 })
+        //         })
+            
         // })
     })
 })
