@@ -2,25 +2,24 @@ const request = require('supertest');
 const server = require('../api/server');
 const db = require('../data/dbConfig');
 
-describe('business auth router', function () {
+describe('volunteer auth router', function () {
     it('tests are running', function () {
         expect(true).toBe(true);
     })
 
-    describe('business register endpoint', function () {
-        // beforeEach(() => {
-        //     return db('businesses').truncate();
+    describe('volunteer register endpoint', function () {
+        // afterEach(() => {
+        //     return db('volunteers').cleanup();
         // })
 
         // it('returns 201 on successful register', function () {
         //     return request(server)
-        //         .post('/api/auth/business/register')
+        //         .post('/api/auth/volunteer/register')
         //         .send({
-        //             username: 'TestBusiness',
+        //             username: 'TestVolunteer',
         //             password: 'password',
-        //             businessName: 'TestBusiness',
-        //             businessAddress: '123 N. Street',
-        //             businessPhone: 1234567890
+        //             name: 'Test Volunteer',
+        //             phoneNumber: 1234567890
         //         })
         //         .then(res => {
         //             expect(res.status).toBe(201);
@@ -29,12 +28,11 @@ describe('business auth router', function () {
 
         it('returns 500 if missing required field', function () {
             return request(server)
-                .post('/api/auth/business/register')
+                .post('/api/auth/volunteer/register')
                 .send({
-                    username: 'TestBusiness',
+                    username: 'TestingV',
                     password: 'password',
-                    businessName: 'TestBusiness',
-                    businessAddress: '123 N. Street',
+                    name: 'Test Volunteer'
                 })
                 .then(res => {
                     expect(res.status).toBe(500);
@@ -45,9 +43,9 @@ describe('business auth router', function () {
     describe('business login endpoint', function () {
         it('returns 200 on successful login', function () {
             return request(server)
-                .post('/api/auth/business/login')
+                .post('/api/auth/volunteer/login')
                 .send({
-                    username: 'TestBus',
+                    username: 'TestVol',
                     password: 'password'
                 })
                 .then(res => {
@@ -59,7 +57,7 @@ describe('business auth router', function () {
             return request(server)
                 .post('/api/auth/business/login')
                 .send({
-                    username: 'TestBus',
+                    username: 'TestVol',
                     password: 'password'
                 })
                 .then(res => {
@@ -71,8 +69,8 @@ describe('business auth router', function () {
             return request(server)
             .post('/api/auth/business/login')
             .send({
-                username: 'WrongBus',
-                password: 'password'
+                username: 'TestVol',
+                password: 'wrongpassword'
             })
             .then(res => {
                 expect(res.status).toBe(401);
