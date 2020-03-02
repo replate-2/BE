@@ -9,7 +9,7 @@ describe('business router', function () {
     describe('GET /api/users/business', function () {
         it('returns 400 if not authorized', function () {
             return request(server)
-                .post('/api/users/business')
+                .get('/api/users/business')
                 .then(res => {
                     expect(res.status).toBe(400);
                 })
@@ -17,7 +17,7 @@ describe('business router', function () {
 
         it('returns message if not logged in', function () {
             return request(server)
-                .post('/api/users/business')
+                .get('/api/users/business')
                 .then(res => {
                     expect(res.body).toEqual({message: res.body.message})
                 })
