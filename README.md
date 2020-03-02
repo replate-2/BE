@@ -64,6 +64,18 @@ DELETE to /api/users/volunteer/:id
 **Get list of all food donations**
 GET /api/food
 
+Returns an object with the following:
+```
+{
+    id: 1,
+    foodType: "donuts",
+    lbsOfFood: 1,
+    preferredPickupTime: "2020-03-07 17:30:00",
+    businessName: "Business1",
+    businessAddress: "123 N. Street",
+    businessPhone: 1234567890
+}
+```
 **Get food donation by Id**
 GET /api/food/:id
 
@@ -91,6 +103,17 @@ DELETE to /api/food/:id
 **Get all pending pickups (already assigned to a Volunteer Id)**
 GET /api/pickups
 
+Returns an object with the following info:
+```
+{
+    id: 1,
+    foodType: "donuts",
+    lbsOfFood: 1,
+    preferredPickupTime: "2020-03-07 17:30:00",
+    completed: 0, // 0 is false, 1 is true
+    name: "Volunteer1"
+    }
+```
 **Get pick up by pickup Id**
 GET /api/pickups/:id
 

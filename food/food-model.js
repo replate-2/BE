@@ -10,7 +10,9 @@ module.exports = {
 }
 
 function find() {
-    return db('food')
+    return db('food as f')
+        .join('businesses as b', 'b.id', 'f.businessId')
+        .select('f.id', 'f.foodType', 'f.lbsofFood', 'f.preferredPickupTime', 'businessName', 'businessAddress', 'businessPhone')
 }
 
 function findByBus(businessId) {
