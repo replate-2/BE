@@ -9,7 +9,7 @@ describe('volunteer auth router', function () {
 
     describe('volunteer register endpoint', function () {
         afterAll(() => {
-            return db('volunteers').cleanup();
+            return db('volunteers').cleanUp();
         })
 
         describe('register new volunteer', function () {
@@ -51,9 +51,9 @@ describe('volunteer auth router', function () {
             return request(server)
                 .post('/api/auth/volunteer/register')
                 .set({
-                    username: 'Lambda',
+                    username: 'TestVolunteer',
                     password: 'password',
-                    name: 'Lambda',
+                    name: 'TestV',
                     phoneNumber: '1234567890'
                 })
         })
@@ -62,7 +62,7 @@ describe('volunteer auth router', function () {
             return request(server)
                 .post('/api/auth/volunteer/login')
                 .send({
-                    username: 'TestVol',
+                    username: 'TestVolunteer',
                     password: 'password'
                 })
                 .then(res => {
@@ -74,7 +74,7 @@ describe('volunteer auth router', function () {
             return request(server)
                 .post('/api/auth/volunteer/login')
                 .send({
-                    username: 'Lambda',
+                    username: 'TestVolunteer',
                     password: 'password'
                 })
                 .then(res => {
@@ -86,7 +86,7 @@ describe('volunteer auth router', function () {
             return request(server)
             .post('/api/auth/volunteer/login')
             .send({
-                username: 'TestV',
+                username: 'TestVolunteer',
                 password: 'wrongpassword'
             })
             .then(res => {

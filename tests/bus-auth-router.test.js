@@ -9,7 +9,7 @@ describe('business auth router', function () {
 
     describe('business register endpoint', function () {
         afterAll(() => {
-            return db('businesses').cleanup();
+            return db('businesses').cleanUp();
         })
 
         describe('register new business', function () {
@@ -53,7 +53,7 @@ describe('business auth router', function () {
             return request(server)
                 .post('/api/auth/business/login')
                 .send({
-                    username: 'TestBus',
+                    username: 'TestBusiness',
                     password: 'password'
                 })
                 .then(res => {
@@ -65,7 +65,7 @@ describe('business auth router', function () {
             return request(server)
                 .post('/api/auth/business/login')
                 .send({
-                    username: 'TestBus',
+                    username: 'TestBusiness',
                     password: 'password'
                 })
                 .then(res => {

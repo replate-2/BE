@@ -67,44 +67,33 @@ describe('food router', function () {
         })
     })
 
-    // describe('POST to /api/food', function () {
-    //     beforeAll(() => {
-    //         return request(server)
-    //             .post('/api/auth/business/register')
-    //             .send({
-    //                 username: 'TestB',
-    //                 password: 'password',
-    //                 businessName: 'TestBusiness',
-    //                 businessAddress: '123 N. Street',
-    //                 businessPhone: '1234567890'
-    //             })
-    //             .then(res => {
-    //                 return request(server)
-    //                     .post('/api/auth/business/login')
-    //                     .send({
-    //                         username: 'TestB',
-    //                         password: 'password'
-    //                     })
-    //                     .then(res => {
-    //                         token = res.body.token;
-    //                     })
-    //             })
-    //     })
+    describe('POST to /api/food', function () {
+        beforeAll(() => {
+            return request(server)
+                .post('/api/auth/business/login')
+                        .send({
+                            username: 'TestBusiness',
+                            password: 'password'
+                        })
+                        .then(res => {
+                            token = res.body.token;
+                        })
+        })
 
-    //     it('returns 201 on successful add', function () {
-    //         return request(server)
-    //             .post('/api/food')
-    //             // .set('authorization', token)
-    //             .set({
-    //                 foodType: 'chicken',
-    //                 lbsOfFood: 4,
-    //                 preferredPickupTime: '2020-03-09 19:00:00',
-    //                 businessId: 1
-    //             })
-    //             .then(res => {
-    //                 expect(res.status).toBe(201)
-    //             })
-    //     })
-    // })
+        // it('returns 201 on successful add', function () {
+        //     return request(server)
+        //         .post('/api/food')
+        //         .set('authorization', token)
+        //         .set({
+        //             foodType: 'chicken',
+        //             lbsOfFood: 4,
+        //             preferredPickupTime: '2020-03-09 19:00:00',
+        //             businessId: 3
+        //         })
+        //         .then(res => {
+        //             expect(res.status).toBe(201)
+        //         })
+        // })
+    })
     
 })
