@@ -137,3 +137,5 @@ PUT to /api/pickups/:id
 **Delete Pick Up from Pickups List**
 DELETE to /api/pickups/:id
 
+**For more information regarding our Replate app, visit**
+https://www.notion.so/Replate-2-Product-Vision-c7ac2c582d7b46ba8286f314d873ed9f
