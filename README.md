@@ -12,7 +12,7 @@ Takes an object including:
     password: 'password', // string
     businessName: 'Business1', // string
     businessAddress: '123 N. Street', // string
-    businessPhone: 1234567890 // integer
+    businessPhone: '1234567890' // string
 }
 ```
 **Login Existing Business**
@@ -34,7 +34,7 @@ Takes an object including:
     username: 'Volunteer1', // Unique string
     password: 'password', // string
     name: 'My Name', // string
-    phoneNumber: 1234567890 // integer
+    phoneNumber: '1234567890' // string
 }
 ```
 **Login Existing Volunteer**
@@ -73,7 +73,7 @@ Returns an object with the following:
     preferredPickupTime: "2020-03-07 17:30:00",
     businessName: "Business1",
     businessAddress: "123 N. Street",
-    businessPhone: 1234567890
+    businessPhone: '1234567890'
 }
 ```
 **Get food donation by Id**
