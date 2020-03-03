@@ -15,7 +15,7 @@ exports.up = function(knex) {
             .notNullable()
             .unique()
         tbl.string('businessAddress').notNullable();
-        tbl.integer('businessPhone', 10).notNullable();
+        tbl.string('businessPhone', 10).notNullable();
     })
     .createTable('volunteers', tbl => {
         tbl.increments();
@@ -30,7 +30,7 @@ exports.up = function(knex) {
             .string('name', 200)
             .index()
             .notNullable()
-        tbl.integer('phoneNumber', 10).notNullable();
+        tbl.string('phoneNumber', 10).notNullable();
     })
     .createTable('food', tbl => {
         tbl.increments();
