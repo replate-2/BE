@@ -8,17 +8,23 @@ describe('business auth router', function () {
     })
 
     describe('business register endpoint', function () {
-        // beforeEach(() => {
-        //     return db('businesses').truncate();
-        // })
+        afterAll(() => {
+            return db('businesses').cleanup();
+        })
 
+        describe('register new business', function () {
+            beforeEach(() => {
+                return db('businesses').truncate();
+            })
+        })
+        
         // it('returns 201 on successful register', function () {
         //     return request(server)
         //         .post('/api/auth/business/register')
         //         .send({
-        //             username: 'TestBusiness',
+        //             username: 'TestingBusiness',
         //             password: 'password',
-        //             businessName: 'TestBusiness',
+        //             businessName: 'TestBus',
         //             businessAddress: '123 N. Street',
         //             businessPhone: 1234567890
         //         })

@@ -8,9 +8,15 @@ describe('volunteer auth router', function () {
     })
 
     describe('volunteer register endpoint', function () {
-        // afterEach(() => {
-        //     return db('volunteers').cleanup();
-        // })
+        afterAll(() => {
+            return db('volunteers').cleanup();
+        })
+
+        describe('register new volunteer', function () {
+            beforeEach(() => {
+                return db('volunteers').truncate();
+            })
+        })
 
         // it('returns 201 on successful register', function () {
         //     return request(server)
@@ -45,7 +51,7 @@ describe('volunteer auth router', function () {
             return request(server)
                 .post('/api/auth/volunteer/login')
                 .send({
-                    username: 'TestVol',
+                    username: 'TestV',
                     password: 'password'
                 })
                 .then(res => {
@@ -57,7 +63,7 @@ describe('volunteer auth router', function () {
             return request(server)
                 .post('/api/auth/business/login')
                 .send({
-                    username: 'TestVol',
+                    username: 'TestV',
                     password: 'password'
                 })
                 .then(res => {
@@ -69,7 +75,7 @@ describe('volunteer auth router', function () {
             return request(server)
             .post('/api/auth/business/login')
             .send({
-                username: 'TestVol',
+                username: 'TestV',
                 password: 'wrongpassword'
             })
             .then(res => {

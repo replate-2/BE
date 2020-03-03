@@ -1,5 +1,6 @@
 const request = require('supertest');
 const server = require('../api/server');
+const db = require('../data/dbConfig');
 
 describe('business router', function () {
     it('runs tests', function () {
@@ -23,35 +24,40 @@ describe('business router', function () {
                 })
         })
 
-        // beforeEach(() => {
-        //     return request(server)
-        //     .post('/api/auth/business/login')
-        //         .set({
-        //             username: 'TestBus',
-        //             password: 'password'
-        //         })
-        //         .then(res => {
-        //             token = res.body.token;
-        //         })
+        beforeEach(() => {
+            return request(server)
+            .post('/api/auth/business/register')
+                .set({
+                    username: 'TestBus',
+                    password: 'password',
+                    businessName: 'TestBusiness',
+                    businessAddress: '123 N. Street',
+                    businessPhone: 1234567890
+                })
+                .then(res => {
+                    return request(server)
+                        .post('/api/auth/business/login')
+                        .send({
+                            username: 'TestBus',
+                            password: 'password'
+                        })
+                        .then(res => {
+                            token = res.body.token;
+                        })
+                })
+        })
+
+        // afterEach(() => {
+        //     return db('businesses').truncate();
         // })
 
         // it('returns list of registered businesses', function () {
-        //     return request(server)
-        //     .post('/api/auth/business/login')
-        //         .set({
-        //             username: 'TestBus',
-        //             password: 'password'
-        //         })
-        //         .then(res => {
-        //             token = res.body.token;
-        //             return request(server)
-        //                 .get('/api/users/business')
-        //                 .set("authorization", token)
-        //                 .then(res => {
-        //                     expect(res.status).toBe(200);
-        //                 })
-        //         })
-            
+        //         return request(server)
+        //             .get('/api/users/business')
+        //             .set('Authorization', token)
+        //             .then(res => {
+        //                 expect(res.status).toBe(200);
+        //             })
         // })
     })
 })
