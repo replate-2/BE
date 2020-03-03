@@ -32,7 +32,7 @@ describe('business router', function () {
                     password: 'password',
                     businessName: 'TestBusiness',
                     businessAddress: '123 N. Street',
-                    businessPhone: 1234567890
+                    businessPhone: '1234567890'
                 })
                 .then(res => {
                     return request(server)

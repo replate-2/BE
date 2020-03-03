@@ -32,7 +32,7 @@ describe('pickups router', function () {
                     username: 'TestVolunteer',
                     password: 'password',
                     name: 'Test',
-                    phoneNumber: 5555555555
+                    phoneNumber: '5555555555'
                 })
                 .then(res => {
                     return request(server)
@@ -56,6 +56,13 @@ describe('pickups router', function () {
                 })
         })
 
-        // it('returns an array of pickups')
+        it('returns an array of pickups', function () {
+            return request(server)
+                .get('/api/pickups')
+                .set('authorization', token)
+                .then(res => {
+                    expect(Array.isArray(res.body)).toBe(true)
+                })
+        })
     })
 })

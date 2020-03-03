@@ -22,11 +22,11 @@ describe('business auth router', function () {
         //     return request(server)
         //         .post('/api/auth/business/register')
         //         .send({
-        //             username: 'TestingBusiness',
+        //             username: 'TestingBusiness1',
         //             password: 'password',
         //             businessName: 'TestBus',
         //             businessAddress: '123 N. Street',
-        //             businessPhone: 1234567890
+        //             businessPhone: '1234567890'
         //         })
         //         .then(res => {
         //             expect(res.status).toBe(201);

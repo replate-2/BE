@@ -22,10 +22,10 @@ describe('volunteer auth router', function () {
         //     return request(server)
         //         .post('/api/auth/volunteer/register')
         //         .send({
-        //             username: 'TestVolunteer',
+        //             username: 'TestVolunteer1',
         //             password: 'password',
         //             name: 'Test Volunteer',
-        //             phoneNumber: 1234567890
+        //             phoneNumber: '1234567890'
         //         })
         //         .then(res => {
         //             expect(res.status).toBe(201);
@@ -46,12 +46,23 @@ describe('volunteer auth router', function () {
         })
     })
 
-    describe('business login endpoint', function () {
+    describe('volunteer login endpoint', function () {
+        beforeAll(() => {
+            return request(server)
+                .post('/api/auth/volunteer/register')
+                .set({
+                    username: 'Lambda',
+                    password: 'password',
+                    name: 'Lambda',
+                    phoneNumber: '1234567890'
+                })
+        })
+
         it('returns 200 on successful login', function () {
             return request(server)
                 .post('/api/auth/volunteer/login')
                 .send({
-                    username: 'TestV',
+                    username: 'TestVol',
                     password: 'password'
                 })
                 .then(res => {
@@ -61,9 +72,9 @@ describe('volunteer auth router', function () {
 
         it('returns token and welcome message on successful login', function () {
             return request(server)
-                .post('/api/auth/business/login')
+                .post('/api/auth/volunteer/login')
                 .send({
-                    username: 'TestV',
+                    username: 'Lambda',
                     password: 'password'
                 })
                 .then(res => {
@@ -73,7 +84,7 @@ describe('volunteer auth router', function () {
 
         it('returns 401 if incorrect credentials', function () {
             return request(server)
-            .post('/api/auth/business/login')
+            .post('/api/auth/volunteer/login')
             .send({
                 username: 'TestV',
                 password: 'wrongpassword'
