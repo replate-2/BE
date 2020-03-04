@@ -16,13 +16,17 @@ function find() {
 }
 
 function findByBus(businessId) {
-    return db('food')
-        .where({businessId})
+    return db('food as f')
+        .join('businesses as b', 'b.id', 'f.businessId')
+        .select('f.id', 'f.foodType', 'f.lbsofFood', 'f.preferredPickupTime', 'businessName', 'businessAddress', 'businessPhone')
+        .where('f.businessId', businessId)
 }
 
 function findById(id) {
-    return db('food')
-        .where({id})
+    return db('food as f')
+        .join('businesses as b', 'b.id', 'f.businessId')
+        .select('f.id', 'f.foodType', 'f.lbsofFood', 'f.preferredPickupTime', 'businessName', 'businessAddress', 'businessPhone')
+        .where('f.id', id)
         .first()
 }
 

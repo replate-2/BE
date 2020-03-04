@@ -49,11 +49,101 @@ Takes an object including:
 ```
 # THE FOLLOWING ENDPOINTS REQUIRE A USER TO BE LOGGED IN!
 
+**Get all Registered Business Profiles**
+GET to /api/users/business
+
+Returns an array with business objects:
+```
+[
+    {
+        id: 1,
+        username: "Business1",
+        password: "password",
+        businessName: "Business1",
+        businessAddress: "123 N. Street",
+        businessPhone: "1234567890"
+    },
+    {
+        id": 2,
+        username: "Business2",
+        password: "password",
+        businessName: "Business2",
+        businessAddress: "456 S. Street",
+        businessPhone: "1234567890"
+    },
+    {
+        id": 3,
+        username: "Business3",
+        password: "password",
+        businessName: "Business3",
+        businessAddress: "1234 W. Street",
+        businessPhone: "1234567890"
+    }
+]
+```
+**Get Business Profile by Id**
+GET to /api/users/business/:id
+
+Returns an object including:
+```
+{
+    id: 1,
+    username: "Business1",
+    password: "password",
+    businessName: "Business1",
+    businessAddress: "123 N. Street",
+    businessPhone: "1234567890"
+}
+```
 **Update Business Profile**
 PUT to /api/users/business/:id
 
 **Delete Business Profile**
 DELETE to /api/users/business/:id
+
+**Get all Registered Volunteer Profiles**
+GET to /api/users/volunteer
+
+Returns an array with volunteer objects:
+```
+[
+    {
+        id: 1,
+        username: "Volunteer1",
+        password: "password",
+        name: "Volunteer1",
+        phoneNumber: "1234567890"
+    },
+    {
+        id: 2,
+        username: "Volunteer2",
+        password: "password",
+        name: "Volunteer2",
+        phoneNumber: "7894561230"
+    },
+    {
+        id: 3,
+        username: "Volunteer3",
+        password: "password",
+        name: "Volunteer3",
+        phoneNumber: "7891234560"
+    }
+]
+```
+
+**Get Volunteer Profile by Id**
+GET to /api/users/volunteer/:id
+
+Returns an object:
+```
+{
+    id: 1,
+    username: "Volunteer1",
+    password: "password",
+    name: "Volunteer1",
+    phoneNumber: "1234567890"
+}
+```
 
 **Update Volunteer Profile**
 PUT to /api/users/volunteer/:id
@@ -63,6 +153,42 @@ DELETE to /api/users/volunteer/:id
 
 **Get list of all food donations**
 GET /api/food
+
+Returns an array of all food donation objects:
+```
+[
+    {
+        id: 1,
+        foodType: "donuts",
+        lbsOfFood: 1,
+        preferredPickupTime: "2020-03-07 17:30:00",
+        businessName: "Business1",
+        businessAddress: "123 N. Street",
+        businessPhone: "1234567890"
+    },
+    {
+        id: 2,
+        foodType: "vegetables",
+        lbsOfFood: 10,
+        preferredPickupTime: "2020-03-07 17:30:00",
+        businessName: "Business2",
+        businessAddress: "456 S. Street",
+        businessPhone: "1234567890"
+    },
+    {
+        id: 3,
+        foodType: "meat",
+        lbsOfFood: 5,
+        preferredPickupTime: "2020-03-07 17:30:00",
+        businessName: "Business3",
+        businessAddress: "1234 W. Street",
+        businessPhone: "1234567890"
+    }
+]
+```
+
+**Get food donation by Id**
+GET /api/food/:id
 
 Returns an object with the following:
 ```
@@ -76,11 +202,24 @@ Returns an object with the following:
     businessPhone: '1234567890'
 }
 ```
-**Get food donation by Id**
-GET /api/food/:id
 
 **Get all food donations by Business Id**
 GET /api/food/business/:id
+
+Returns an array with all food donations for that id:
+```
+[
+    {
+        id: 2, // this is the food id
+        foodType: "vegetables",
+        lbsOfFood: 10,
+        preferredPickupTime: "2020-03-07 17:30:00",
+        businessName: "Business2",
+        businessAddress: "456 S. Street",
+        businessPhone: "1234567890"
+    }
+]
+```
 
 **Add a new food to be donated**
 POST to /api/food
@@ -103,22 +242,66 @@ DELETE to /api/food/:id
 **Get all pending pickups (already assigned to a Volunteer Id)**
 GET /api/pickups
 
-Returns an object with the following info:
+Returns an array with all pickup objects
+```
+[
+    {
+        id: 1,
+        foodType: "donuts",
+        lbsOfFood: 1,
+        preferredPickupTime: "2020-03-07 17:30:00",
+        completed: 0,
+        name: "Volunteer1"
+    },
+    {
+        id: 2,
+        foodType: "vegetables",
+        lbsOfFood: 10,
+        preferredPickupTime: "2020-03-07 17:30:00",
+        completed: 0,
+        name: "Volunteer2"
+    },
+    {
+        id: 3,
+        foodType: "meat",
+        lbsOfFood: 5,
+        preferredPickupTime: "2020-03-07 17:30:00",
+        completed: 0,
+        name: "Volunteer3"
+    }
+]
+```
+**Get pick up by pickup Id**
+GET /api/pickups/:id
+
+Returns an object:
 ```
 {
     id: 1,
     foodType: "donuts",
     lbsOfFood: 1,
     preferredPickupTime: "2020-03-07 17:30:00",
-    completed: 0, // 0 is false, 1 is true
+    completed: 0,
     name: "Volunteer1"
-    }
+}
 ```
-**Get pick up by pickup Id**
-GET /api/pickups/:id
 
 **Get all pick ups for a Volunteer Id**
-GET /api/pickups/volunterr/:id
+GET /api/pickups/volunteer/:id
+
+Returns an array with all pickup objects:
+```
+[
+    {
+        id: 1, // this is the pick up id
+        foodType: "donuts",
+        lbsOfFood: 1,
+        preferredPickupTime: "2020-03-07 17:30:00",
+        completed: 0,
+        name: "Volunteer1"
+    }
+]
+```
 
 **Add donation to pick up list**
 POST /api/pickups
@@ -137,5 +320,7 @@ PUT to /api/pickups/:id
 **Delete Pick Up from Pickups List**
 DELETE to /api/pickups/:id
 
+
 **For more information regarding our Replate app, visit**
+
 https://www.notion.so/Replate-2-Product-Vision-c7ac2c582d7b46ba8286f314d873ed9f
