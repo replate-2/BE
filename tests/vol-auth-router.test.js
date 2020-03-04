@@ -16,38 +16,38 @@ describe('volunteer auth router', function () {
             beforeEach(() => {
                 return db('volunteers').truncate();
             })
-        })
 
-        // it('returns 201 on successful register', function () {
-        //     return request(server)
-        //         .post('/api/auth/volunteer/register')
-        //         .send({
-        //             username: 'TestVolunteer1',
-        //             password: 'password',
-        //             name: 'Test Volunteer',
-        //             phoneNumber: '1234567890'
-        //         })
-        //         .then(res => {
-        //             expect(res.status).toBe(201);
-        //         })
-        // })
-
-        it('returns 500 if missing required field', function () {
+            it('returns 201 on successful register', function () {
             return request(server)
                 .post('/api/auth/volunteer/register')
                 .send({
-                    username: 'TestingV',
+                    username: 'TestVolunteer',
                     password: 'password',
-                    name: 'Test Volunteer'
+                    name: 'Test Volunteer',
+                    phoneNumber: '1234567890'
                 })
                 .then(res => {
-                    expect(res.status).toBe(500);
+                    expect(res.status).toBe(201);
                 })
+            })
+
+            it('returns 500 if missing required field', function () {
+                return request(server)
+                    .post('/api/auth/volunteer/register')
+                    .send({
+                        username: 'TestingV',
+                        password: 'password',
+                        name: 'Test Volunteer'
+                    })
+                    .then(res => {
+                        expect(res.status).toBe(500);
+                    })
+            })
         })
     })
 
     describe('volunteer login endpoint', function () {
-        beforeAll(() => {
+        beforeEach(() => {
             return request(server)
                 .post('/api/auth/volunteer/register')
                 .set({
@@ -86,7 +86,7 @@ describe('volunteer auth router', function () {
             return request(server)
             .post('/api/auth/volunteer/login')
             .send({
-                username: 'TestVolunteer',
+                username: 'TestV',
                 password: 'wrongpassword'
             })
             .then(res => {

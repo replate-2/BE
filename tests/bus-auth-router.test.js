@@ -18,20 +18,20 @@ describe('business auth router', function () {
             })
         })
         
-        // it('returns 201 on successful register', function () {
-        //     return request(server)
-        //         .post('/api/auth/business/register')
-        //         .send({
-        //             username: 'TestingBusiness1',
-        //             password: 'password',
-        //             businessName: 'TestBus',
-        //             businessAddress: '123 N. Street',
-        //             businessPhone: '1234567890'
-        //         })
-        //         .then(res => {
-        //             expect(res.status).toBe(201);
-        //         })
-        // })
+        it('returns 201 on successful register', function () {
+            return request(server)
+                .post('/api/auth/business/register')
+                .send({
+                    username: 'TestingBusiness',
+                    password: 'password',
+                    businessName: 'TestBus',
+                    businessAddress: '123 N. Street',
+                    businessPhone: '1234567890'
+                })
+                .then(res => {
+                    expect(res.status).toBe(201);
+                })
+        })
 
         it('returns 500 if missing required field', function () {
             return request(server)
@@ -53,7 +53,7 @@ describe('business auth router', function () {
             return request(server)
                 .post('/api/auth/business/login')
                 .send({
-                    username: 'TestBusiness',
+                    username: 'TestingBusiness',
                     password: 'password'
                 })
                 .then(res => {
@@ -65,7 +65,7 @@ describe('business auth router', function () {
             return request(server)
                 .post('/api/auth/business/login')
                 .send({
-                    username: 'TestBusiness',
+                    username: 'TestingBusiness',
                     password: 'password'
                 })
                 .then(res => {
