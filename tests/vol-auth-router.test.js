@@ -8,22 +8,22 @@ describe('volunteer auth router', function () {
     })
 
     describe('volunteer register endpoint', function () {
-        afterAll(() => {
-            return db('volunteers').cleanUp();
-        })
+        // afterAll(() => {
+        //     return db('volunteers').cleanUp();
+        // })
 
         describe('register new volunteer', function () {
-            beforeEach(() => {
-                return db('volunteers').truncate();
-            })
+            // beforeEach(() => {
+            //     return db('volunteers').truncate();
+            // })
 
             it('returns 201 on successful register', function () {
             return request(server)
                 .post('/api/auth/volunteer/register')
                 .send({
-                    username: 'TestVolunteer',
+                    username: 'VolunteerTest',
                     password: 'password',
-                    name: 'Test Volunteer',
+                    name: 'Volunteer Test',
                     phoneNumber: '1234567890'
                 })
                 .then(res => {
@@ -47,22 +47,25 @@ describe('volunteer auth router', function () {
     })
 
     describe('volunteer login endpoint', function () {
-        beforeEach(() => {
-            return request(server)
-                .post('/api/auth/volunteer/register')
-                .set({
-                    username: 'TestVolunteer2',
-                    password: 'password',
-                    name: 'TestV',
-                    phoneNumber: '1234567890'
-                })
-        })
+        // beforeAll(() => {
+        //     return db('volunteers').truncate();
+        // })
+        // it('logging in user', function () {
+        //     return request(server)
+        //     .post('/api/auth/volunteer/register')
+        //     .set({
+        //         username: 'TestVolunteer2',
+        //         password: 'password',
+        //         name: 'TestV',
+        //         phoneNumber: '1234567890'
+        //     })
+        // })
 
         it('returns 200 on successful login', function () {
             return request(server)
                 .post('/api/auth/volunteer/login')
                 .send({
-                    username: 'TestVolunteer2',
+                    username: 'VolunteerTest',
                     password: 'password'
                 })
                 .then(res => {
@@ -74,7 +77,7 @@ describe('volunteer auth router', function () {
             return request(server)
                 .post('/api/auth/volunteer/login')
                 .send({
-                    username: 'TestVolunteer2',
+                    username: 'VolunteerTest',
                     password: 'password'
                 })
                 .then(res => {
@@ -86,7 +89,7 @@ describe('volunteer auth router', function () {
             return request(server)
             .post('/api/auth/volunteer/login')
             .send({
-                username: 'TestVolunteer2',
+                username: 'VolunteerTest',
                 password: 'wrongpassword'
             })
             .then(res => {

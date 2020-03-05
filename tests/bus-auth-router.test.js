@@ -22,9 +22,9 @@ describe('business auth router', function () {
             return request(server)
                 .post('/api/auth/business/register')
                 .send({
-                    username: 'TestingBusiness',
+                    username: 'BusTest',
                     password: 'password',
-                    businessName: 'TestBus',
+                    businessName: 'BusTest',
                     businessAddress: '123 N. Street',
                     businessPhone: '1234567890'
                 })
@@ -53,7 +53,7 @@ describe('business auth router', function () {
             return request(server)
                 .post('/api/auth/business/login')
                 .send({
-                    username: 'TestingBusiness',
+                    username: 'BusTest',
                     password: 'password'
                 })
                 .then(res => {
@@ -65,7 +65,7 @@ describe('business auth router', function () {
             return request(server)
                 .post('/api/auth/business/login')
                 .send({
-                    username: 'TestingBusiness',
+                    username: 'BusTest',
                     password: 'password'
                 })
                 .then(res => {
