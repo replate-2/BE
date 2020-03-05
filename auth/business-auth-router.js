@@ -31,6 +31,7 @@ router.post('/login', (req, res) => {
                 res.status(200).json({
                     message: `Welcome ${user.username}!`,
                     token,
+                    id: user.id
                 })
             } else {
                 res.status(401).json({message: 'You shall not pass!'})
@@ -43,7 +44,8 @@ router.post('/login', (req, res) => {
 
 function generateToken(user) {
     const payload = {
-        username: user.username
+        username: user.username,
+        id: user.id
     }
 
     const options = {

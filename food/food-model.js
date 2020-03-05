@@ -12,20 +12,20 @@ module.exports = {
 function find() {
     return db('food as f')
         .join('businesses as b', 'b.id', 'f.businessId')
-        .select('f.id', 'f.foodType', 'f.lbsofFood', 'f.preferredPickupTime', 'businessName', 'businessAddress', 'businessPhone')
+        .select('f.id', 'f.foodType', 'f.lbsofFood', 'f.preferredPickupTime', 'f.businessId', 'businessName', 'businessAddress', 'businessPhone')
 }
 
 function findByBus(businessId) {
     return db('food as f')
         .join('businesses as b', 'b.id', 'f.businessId')
-        .select('f.id', 'f.foodType', 'f.lbsofFood', 'f.preferredPickupTime', 'businessName', 'businessAddress', 'businessPhone')
+        .select('f.id', 'f.foodType', 'f.lbsofFood', 'f.preferredPickupTime', 'f.businessId', 'businessName', 'businessAddress', 'businessPhone')
         .where('f.businessId', businessId)
 }
 
 function findById(id) {
     return db('food as f')
         .join('businesses as b', 'b.id', 'f.businessId')
-        .select('f.id', 'f.foodType', 'f.lbsofFood', 'f.preferredPickupTime', 'businessName', 'businessAddress', 'businessPhone')
+        .select('f.id', 'f.foodType', 'f.lbsofFood', 'f.preferredPickupTime', 'f.businessId', 'businessName', 'businessAddress', 'businessPhone')
         .where('f.id', id)
         .first()
 }
