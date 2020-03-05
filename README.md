@@ -162,6 +162,7 @@ Returns an array of all food donation objects:
         foodType: "donuts",
         lbsOfFood: 1,
         preferredPickupTime: "2020-03-07 17:30:00",
+        businessId: 1,
         businessName: "Business1",
         businessAddress: "123 N. Street",
         businessPhone: "1234567890"
@@ -171,6 +172,7 @@ Returns an array of all food donation objects:
         foodType: "vegetables",
         lbsOfFood: 10,
         preferredPickupTime: "2020-03-07 17:30:00",
+        businessId: 2,
         businessName: "Business2",
         businessAddress: "456 S. Street",
         businessPhone: "1234567890"
@@ -180,6 +182,7 @@ Returns an array of all food donation objects:
         foodType: "meat",
         lbsOfFood: 5,
         preferredPickupTime: "2020-03-07 17:30:00",
+        businessId: 3,
         businessName: "Business3",
         businessAddress: "1234 W. Street",
         businessPhone: "1234567890"
@@ -197,6 +200,7 @@ Returns an object with the following:
     foodType: "donuts",
     lbsOfFood: 1,
     preferredPickupTime: "2020-03-07 17:30:00",
+    businessId: 1,
     businessName: "Business1",
     businessAddress: "123 N. Street",
     businessPhone: '1234567890'
@@ -214,6 +218,7 @@ Returns an array with all food donations for that id:
         foodType: "vegetables",
         lbsOfFood: 10,
         preferredPickupTime: "2020-03-07 17:30:00",
+        businessId: 1,
         businessName: "Business2",
         businessAddress: "456 S. Street",
         businessPhone: "1234567890"
@@ -251,6 +256,7 @@ Returns an array with all pickup objects
         lbsOfFood: 1,
         preferredPickupTime: "2020-03-07 17:30:00",
         completed: 0,
+        volunteerId: 1,
         name: "Volunteer1"
     },
     {
@@ -259,6 +265,7 @@ Returns an array with all pickup objects
         lbsOfFood: 10,
         preferredPickupTime: "2020-03-07 17:30:00",
         completed: 0,
+        volunteerId: 2,
         name: "Volunteer2"
     },
     {
@@ -267,6 +274,7 @@ Returns an array with all pickup objects
         lbsOfFood: 5,
         preferredPickupTime: "2020-03-07 17:30:00",
         completed: 0,
+        volunteerId: 3,
         name: "Volunteer3"
     }
 ]
@@ -282,6 +290,7 @@ Returns an object:
     lbsOfFood: 1,
     preferredPickupTime: "2020-03-07 17:30:00",
     completed: 0,
+    volunteerId: 1,
     name: "Volunteer1"
 }
 ```
@@ -298,6 +307,7 @@ Returns an array with all pickup objects:
         lbsOfFood: 1,
         preferredPickupTime: "2020-03-07 17:30:00",
         completed: 0,
+        volunteerId: 1,
         name: "Volunteer1"
     }
 ]
