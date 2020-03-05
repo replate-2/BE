@@ -51,7 +51,7 @@ describe('volunteer auth router', function () {
             return request(server)
                 .post('/api/auth/volunteer/register')
                 .set({
-                    username: 'TestVolunteer',
+                    username: 'TestVolunteer2',
                     password: 'password',
                     name: 'TestV',
                     phoneNumber: '1234567890'
@@ -62,7 +62,7 @@ describe('volunteer auth router', function () {
             return request(server)
                 .post('/api/auth/volunteer/login')
                 .send({
-                    username: 'TestVolunteer',
+                    username: 'TestVolunteer2',
                     password: 'password'
                 })
                 .then(res => {
@@ -74,11 +74,11 @@ describe('volunteer auth router', function () {
             return request(server)
                 .post('/api/auth/volunteer/login')
                 .send({
-                    username: 'TestVolunteer',
+                    username: 'TestVolunteer2',
                     password: 'password'
                 })
                 .then(res => {
-                    expect(res.body).toEqual({message: res.body.message, token: res.body.token})
+                    expect(res.body).toEqual({message: res.body.message, token: res.body.token, id: res.body.id})
                 })
         })
 
@@ -86,7 +86,7 @@ describe('volunteer auth router', function () {
             return request(server)
             .post('/api/auth/volunteer/login')
             .send({
-                username: 'TestV',
+                username: 'TestVolunteer2',
                 password: 'wrongpassword'
             })
             .then(res => {

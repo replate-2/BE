@@ -69,7 +69,7 @@ describe('business auth router', function () {
                     password: 'password'
                 })
                 .then(res => {
-                    expect(res.body).toEqual({message: res.body.message, token: res.body.token})
+                    expect(res.body).toEqual({message: res.body.message, token: res.body.token, id: res.body.id})
                 })
         })
 
